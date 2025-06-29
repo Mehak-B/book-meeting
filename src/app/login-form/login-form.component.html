@@ -1,0 +1,17 @@
+<div class=" login-container">
+    <div>
+<div>LOGIN DETAILS</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+    <label for="email">Email-Id: </label>
+    <input type="text" placeholder="Enter Email" formControlName="email">
+
+    <label for="password">Password: </label>
+    <input type="password" placeholder="Enter Password" formControlName="password">
+
+    <!-- <button [disabled]="!loginForm.valid" type="submit" (click)="onSubmit()">Submit</button> -->
+        <button [disabled]="!loginForm.valid">Submit</button>
+
+</form>
+</div>
+</div>
