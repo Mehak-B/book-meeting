@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-form',
@@ -16,7 +17,7 @@ export class LoginForm implements OnInit{
 
   // })
 
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder, private router :Router){}
 
   ngOnInit(){
     this.loginForm = this.fb.group({
@@ -33,7 +34,8 @@ onSubmit(event:any) {
     console.log("inside",this.loginForm);
     localStorage.setItem('credentials', JSON.stringify(this.loginForm.value))
     // localStorage.setItem('pass', this.loginForm.value.email)
-
+    this.router.navigateByUrl('/home-page')
+       
   }
 }
 

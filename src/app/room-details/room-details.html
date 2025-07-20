@@ -1,0 +1,22 @@
+<table class="booking-table">
+  <thead>
+    <tr class="table-header-row">
+      <th class="table-header">Room</th>
+      <th class="table-header">Date</th>
+      <th class="table-header">From</th>
+      <th class="table-header">To</th>
+      <th class="table-header">Agenda</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (booking of bookedRooms; track booking) {
+      <tr class="table-row">
+        <td class="table-cell">{{ booking.meetingroom }}</td>
+        <td class="table-cell">{{ booking.selectdate }}</td>
+        <td class="table-cell">{{ booking.fromTime }}</td>
+        <td class="table-cell">{{ booking.toTime }}</td>
+        <td class="table-cell">{{ booking.agenda }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

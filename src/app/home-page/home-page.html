@@ -1,0 +1,61 @@
+<button (click)="bookRoom()">Book A Room</button>
+
+
+<!-- <ng-template #formDialog> -->
+<dialog #formDialog class="dialog-form">
+  <p>Greetings, one and all!</p>
+  <form [formGroup] = "roomDetails" class="form-container">
+
+     <!-- <label for="meetingroom">Meeting Room</label>
+     <input type="number" name="meetingroom" placeholder="Select Room" formControlName="meetingroom"> -->
+     <select name="cars" id="cars" formControlName="meetingroom">
+            <option value="" disabled selected>Select Room</option>
+            @for(room of rooms; track room.id; ){
+                <option [value]="room.label">{{room.label}}</option>
+            }
+       </select>
+
+    <label for="date">Select Date</label>
+    <input type="date" name="date" placeholder="Select Date" formControlName="selectdate"   [min]="minDate">
+    @if (roomDetails.get('selectdate')?.errors?.['weekend']) {
+  <div>Please select a weekday (Monday to Friday).</div>
+}
+
+    <div class="time-range">
+      <div>
+        <label for="fromTime">From Time</label>
+        <input type="time" name="fromTime" formControlName="fromTime"/>
+      </div>
+      <div>
+        <label for="toTime">To Time</label>
+        <input type="time" name="toTime" formControlName="toTime"/>
+      </div>
+      @if(roomDetails.errors?.['outOfWorkingHours']){
+      <div>
+  Time must be between 9:00 AM and 6:00 PM.
+</div>
+      }
+      @if(roomDetails.errors?.['invalidDuration']){
+<div>
+  Meeting duration must be between 30 minutes and 1 hour.
+</div>
+      }
+      @if(roomDetails.errors?.['slotUnavailable']){
+<div>
+  This slot is already booked. Please choose another time.
+</div>
+      }
+    </div>
+
+    <label for="agenda">Agenda</label>
+    <textarea  name="agenda" placeholder="Enter Agenda" formControlName="agenda"></textarea>
+
+    
+    <button type="submit" (click)="handleSubmission()">Submit</button>
+    
+  </form>
+</dialog>
+
+@if(bookedRooms.length){
+<room-details [bookedRooms]="bookedRooms"></room-details>
+}

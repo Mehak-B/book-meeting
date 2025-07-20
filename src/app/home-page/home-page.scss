@@ -1,0 +1,48 @@
+.dialog-form {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 400px;
+  font-family: Arial, sans-serif;
+
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.time-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.time-range div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
